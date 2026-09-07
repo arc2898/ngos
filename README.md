@@ -1,6 +1,6 @@
 # NGOS
 
-**NGOS — Next Generation Operating System** is a tiny Void Linux derivative with a hand-built X11 desktop shell. Its visual language combines a Windows-like task surface, macOS-inspired shell affordances, and a cyberpunk glass aesthetic: cyan/violet neon, translucent panels, soft blur, wobbly motion, and a magic-lamp minimize animation.
+**NGOS — Next Generation Operating System** is a tiny Void Linux derivative with a stable X11 desktop baseline. Its visual language combines a Windows-like task surface, macOS-inspired shell affordances, and a cyberpunk glass aesthetic: cyan/violet neon, translucent panels, soft blur, wobbly motion, and a magic-lamp minimize animation.
 
 This repository contains the source for the **NGOS session**, a minimal **NGDM** display-manager prototype, theme assets, and a reproducible Void `mklive` ISO builder. The first milestone targets a compressed image under 150 MiB on x86_64 Intel-compatible hardware.
 
@@ -8,7 +8,8 @@ This repository contains the source for the **NGOS session**, a minimal **NGDM**
 
 | Component | Role |
 |---|---|
-| `src/ngoswm.c` | Xlib window manager and desktop shell with top-panel chrome, basic client framing, dock magnification, launcher, workspaces, and animation. |
+| `src/ngoswm.c` | Stable branded panel/dock layer with launcher, workspaces, dark-mode toggle, and dock magnification. |
+| `openbox` | Mature X11 window manager used for title bars, close/minimize/maximize controls, focus, move, resize, and stacking. |
 | `src/ngdm.c` | Minimal foreground display-manager prototype that starts Xorg through `xinit` and launches the NGOS session. |
 | `session/ngos-session` | Session startup, wallpaper, compositor, hotkeys, and service setup. |
 | `theme/` | SVG logo, mac-inspired dock icon pack, WhiteSur upstream integration, cursor theme, wallpaper, and palette definitions. |
@@ -31,7 +32,7 @@ The builder downloads only the requested packages, installs the custom component
 
 ## Status
 
-This is an initial desktop and ISO engineering prototype. Before daily-driver use, add PAM policy, session isolation, crash recovery, accessibility support, power management, hardware probing, signed release artifacts, and a real installer.
+This is the first stable-release baseline. Before daily-driver use, add PAM policy, session isolation, accessibility support, power management, hardware probing, signed release artifacts, and a real installer.
 
 ## License
 

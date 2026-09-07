@@ -7,4 +7,5 @@ xsetroot -solid '#060914'
 [ -x /usr/bin/picom ] && picom --backend xrender --vsync --config /etc/ngos/picom.conf &
 [ -x /usr/bin/xsetroot ] && xsetroot -cursor_name left_ptr
 [ -x /usr/bin/ngoswm ] || exit 1
+if [ -x /usr/bin/openbox ]; then openbox --sm-disable & fi
 exec ngoswm

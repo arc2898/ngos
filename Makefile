@@ -1,5 +1,5 @@
 CC ?= cc
-CFLAGS ?= -Os -s -Wall -Wextra
+CFLAGS ?= -Os -s -Wall -Wextra -Wno-unused-function
 LDFLAGS ?= -lX11
 PREFIX ?= /usr
 all: ngoswm ngdm
