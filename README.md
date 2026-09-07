@@ -11,13 +11,13 @@ This repository contains the source for the **NGOS session**, a minimal **NGDM**
 | `src/ngoswm.c` | Xlib window manager and desktop shell with top-panel chrome, basic client framing, dock magnification, launcher, workspaces, and animation. |
 | `src/ngdm.c` | Minimal foreground display-manager prototype that starts Xorg through `xinit` and launches the NGOS session. |
 | `session/ngos-session` | Session startup, wallpaper, compositor, hotkeys, and service setup. |
-| `theme/` | SVG logo, mac-inspired dock icon pack, cursor theme, wallpaper, and palette definitions. |
+| `theme/` | SVG logo, mac-inspired dock icon pack, WhiteSur upstream integration, cursor theme, wallpaper, and palette definitions. |
 | `iso/build-iso.sh` | Void `mklive` image build with a size gate. |
 | `packages/` | Void package templates for `ngoswm` and `ngdm`. |
 
 ## Keyboard map
 
-`Super` opens the launcher. `Super+Enter` opens a terminal. `Super+1..4` switches workspaces. `Super+H/J/K/L` moves focus. `Super+Shift+Q` closes the focused window. `Super+M` triggers the magic-lamp minimize effect.
+`Super` opens the launcher. `Super+Enter` opens a terminal. `Super+1..4` switches workspaces. `Super+Shift+Q` closes the focused window. `Super+M` triggers the magic-lamp minimize effect. The default shell configuration is Zsh with a Kali-inspired prompt, completion, history, and safe convenience aliases.
 
 ## Build
 

@@ -1,0 +1,16 @@
+# NGOS Kali-style interactive shell configuration.
+# Inspired by Kali's zsh setup; kept dependency-light for the minimal image.
+export EDITOR=${EDITOR:-vi}
+export HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
+export HISTSIZE=10000
+export SAVEHIST=10000
+setopt autocd hist_ignore_dups share_history interactive_comments
+autoload -Uz compinit && compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zcompdump"
+PROMPT='%F{cyan}%n@%m%f %F{magenta}%~%f %(?.%F{green}❯%f.%F{red}✗%f) '
+RPROMPT='%F{blue}NGOS%f'
+# Safe convenience aliases; no destructive aliases are installed.
+alias ll='ls -lah --color=auto'
+alias la='ls -A --color=auto'
+alias c='clear'
+alias ip='ip -c'
+if [ -f "$HOME/.alias" ]; then source "$HOME/.alias"; fi
