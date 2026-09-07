@@ -2,8 +2,10 @@
 export XDG_CURRENT_DESKTOP=NGOS
 export XDG_SESSION_DESKTOP=ngos
 export GTK_THEME=Adwaita:dark
+export XCURSOR_THEME=WhiteSur
+export XCURSOR_SIZE=24
 xsetroot -solid '#060914'
-[ -x /usr/bin/feh ] && feh --bg-fill /usr/share/backgrounds/ngos/wallpaper.svg &
+[ -f /usr/share/backgrounds/ngos/wallpaper.svg ] && [ -x /usr/bin/feh ] && feh --bg-fill /usr/share/backgrounds/ngos/wallpaper.svg &
 [ -x /usr/bin/picom ] && picom --backend xrender --vsync --config /etc/ngos/picom.conf &
 [ -x /usr/bin/xsetroot ] && xsetroot -cursor_name left_ptr
 [ -x /usr/bin/ngoswm ] || exit 1

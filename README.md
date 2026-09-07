@@ -4,6 +4,8 @@
 
 This repository contains the source for the **NGOS session**, a minimal **NGDM** display-manager prototype, theme assets, and a reproducible Void `mklive` ISO builder. The first milestone targets a compressed image under 150 MiB on x86_64 Intel-compatible hardware.
 
+The stable session loads the NGOS wallpaper from `/usr/share/backgrounds/ngos/wallpaper.svg` and selects the WhiteSur cursor theme at login. `theme/install-assets.sh` installs those runtime assets into an image root.
+
 ## Components
 
 | Component | Role |

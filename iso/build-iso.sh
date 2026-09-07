@@ -11,7 +11,7 @@ command -v xorriso >/dev/null || { echo 'ERROR: install xorriso first' >&2; exit
 mkdir -p "$OUT"
 make -C "$ROOT" clean all
 # Keep the base deliberately narrow. Add packages only when the size budget allows it.
-PKGS='base-system xorg-minimal xinit xterm xsetroot openbox picom dbus elogind zsh git feh'
+PKGS='base-system xorg-minimal xinit xterm xsetroot openbox picom dbus elogind zsh git feh xcursor-themes'
 void-mklive -a "$ARCH" -p "$PKGS" -o "$IMAGE" -I "$ROOT/ngoswm" || {
   echo 'mklive invocation differs on this Void release; see docs/build.md' >&2; exit 1;
 }
