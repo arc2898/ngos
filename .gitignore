@@ -1,0 +1,7 @@
+ngoswm
+ngdm
+out/
+*.iso
+*.img
+*.log
+void-linux-source/
