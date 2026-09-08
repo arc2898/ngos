@@ -2,15 +2,22 @@
 set -eu
 cd "$(dirname "$0")/.."
 mkdir -p out
-Xvfb :99 -screen 0 1280x800x24 -ac >/tmp/ngos-xvfb.log 2>&1 & XVFB=$!
+for tool in Xvfb xterm xdotool; do
+  command -v "$tool" >/dev/null || { echo "missing test dependency: $tool" >&2; exit 2; }
+done
+cleanup(){ for pid in $(ps -o pid= --ppid $$ 2>/dev/null); do kill "$pid" 2>/dev/null || true; done; }
+trap cleanup EXIT INT TERM
+export DISPLAY=:100
+Xvfb "$DISPLAY" -screen 0 1280x800x24 -ac >/tmp/ngos-xvfb.log 2>&1 & XVFB=$!
 sleep 1
-DISPLAY=:99 ./ngoswm >/tmp/ngos-wm.log 2>&1 & WM=$!
+./ngoswm >/tmp/ngos-wm.log 2>&1 & WM=$!
 sleep 1
-DISPLAY=:99 xterm -geometry 70x18+160+160 >/tmp/ngos-xterm.log 2>&1 & TERM_PID=$!
+ xterm -geometry 70x18+160+160 >/tmp/ngos-xterm.log 2>&1 & TERM_PID=$!
 sleep 1
-DISPLAY=:99 xdotool mousemove 640 735
+xdotool mousemove 640 735
 sleep 1
 python3 docs/capture_gui.py
 test -s out/ngos-desktop.png
-kill "$TERM_PID" "$WM" "$XVFB" 2>/dev/null || true
+cleanup
+trap - EXIT
 printf 'NGOS GUI smoke test passed\n'
