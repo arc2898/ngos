@@ -1,0 +1,19 @@
+[package]
+name = "ngos-cursor-assets"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+alloc = { package = "alloc", version = "1.80" }
+anyhow = "1.0"
+walkdir = "2.4"
+image = { version = "0.24", features = ["alloc", "png", "jpeg"] }
+tinyvec = "1.10"
+
+[profile.release]
+panic = "abort"
+lto = "thin"
+codegen-units = 1
+opt-level = "z"
+strip = true

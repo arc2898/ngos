@@ -1,0 +1,20 @@
+[package]
+name = "ngos-wasm-runtime"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+alloc = { package = "alloc", version = "1.80" }
+wasmtime = { version = "20.0", features = ["alloc", "cranelift", "parallel-compilation"] }
+anyhow = "1.0"
+thiserror = "1.0"
+serde = { version = "1.0", features = ["alloc", "derive"] }
+toml = "0.8"
+
+[profile.release]
+panic = "abort"
+lto = "thin"
+codegen-units = 1
+opt-level = "z"
+strip = true

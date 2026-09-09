@@ -1,0 +1,28 @@
+[package]
+name = "ngos-kernel"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+core = { package = "core", version = "1.80" }
+compiler_builtins = { version = "0.1" }
+sel4-sys = { path = "../libs/sel4-sys" }
+capability = { path = "../libs/capability" }
+alloc = { package = "alloc", version = "1.80" }
+linked_list_allocator = "0.10"
+buddy_system_allocator = "0.6"
+spin = "0.9"
+x86_64 = "0.16"
+bitflags = "2.5"
+tracing = { version = "0.1", features = ["alloc"] }
+
+[profile.release]
+panic = "abort"
+lto = "thin"
+codegen-units = 1
+opt-level = "z"
+strip = true
+
+[profile.dev]
+panic = "abort"

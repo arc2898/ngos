@@ -1,0 +1,22 @@
+[package]
+name = "ngos-net"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+capability = { path = "../../libs/capability" }
+sel4-sys = { path = "../../libs/sel4-sys" }
+alloc = { package = "alloc", version = "1.80" }
+spin = "0.9"
+hashbrown = "0.14"
+anyhow = "1.0"
+thiserror = "1.0"
+smoltcp = { version = "0.9", features = ["alloc", "socket-tcp", "socket-udp", "socket-icmp", "phy-ethernet", "storage-slab"] }
+
+[profile.release]
+panic = "abort"
+lto = "thin"
+codegen-units = 1
+opt-level = "z"
+strip = true

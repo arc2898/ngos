@@ -1,0 +1,80 @@
+[workspace]
+resolver = "2"
+members = [
+    "kernel",
+    "userspace/init",
+    "userspace/vfs",
+    "userspace/net",
+    "userspace/audio",
+    "userspace/agent",
+    "userspace/compositor",
+    "userspace/shell",
+    "userspace/services",
+    "drivers/gpu/intel_i915",
+    "drivers/storage/ahci",
+    "drivers/fs/ext4",
+    "drivers/net/e1000e",
+    "drivers/net/rtl8188eu",
+    "drivers/usb/xhci",
+    "drivers/input/hid",
+    "drivers/audio/hda",
+    "drivers/acpi",
+    "apps/terminal",
+    "apps/editor",
+    "apps/browser",
+    "apps/ai-assistant",
+    "apps/settings",
+    "libs/sel4-sys",
+    "libs/capability",
+    "libs/tahoe-ui",
+    "libs/wasm-runtime",
+    "libs/cursor-assets",
+]
+
+[workspace.dependencies]
+sel4-sys = { path = "libs/sel4-sys" }
+capability = { path = "libs/capability" }
+tahoe-ui = { path = "libs/tahoe-ui" }
+wasm-runtime = { path = "libs/wasm-runtime" }
+cursor-assets = { path = "libs/cursor-assets" }
+
+alloc = { package = "alloc", version = "1.80" }
+core = { package = "core", version = "1.80" }
+compiler_builtins = { version = "0.1" }
+
+bitflags = "2.5"
+spin = "0.9"
+x86_64 = "0.16"
+volatile = "0.4"
+linked_list_allocator = "0.10"
+buddy_system_allocator = "0.6"
+hashbrown = "0.14"
+smallvec = "1.12"
+capnp = { version = "0.17", features = ["alloc"] }
+capnp-rpc = { version = "0.17", features = ["alloc"] }
+serde = { version = "1.0", features = ["alloc", "derive"] }
+serde_json = "1.0"
+toml = "0.8"
+anyhow = "1.0"
+thiserror = "1.0"
+tracing = { version = "0.1", features = ["alloc"] }
+tracing-subscriber = { version = "0.3", features = ["alloc", "fmt"] }
+ash = { version = "0.37", features = ["alloc"] }
+raw-window-handle = "0.6"
+smoltcp = { version = "0.9", features = ["alloc", "socket-tcp", "socket-udp", "socket-icmp", "phy-ethernet", "storage-slab"] }
+cpal = { version = "0.14", features = ["alloc"] }
+ext4 = { version = "0.3", features = ["alloc"] }
+wasmtime = { version = "20.0", features = ["alloc", "cranelift", "parallel-compilation"] }
+rusqlite = { version = "0.31", features = ["bundled", "vtab", "extra_check", "functions", "alloc"] }
+uuid = { version = "1.6", features = ["v4", "alloc", "serde"] }
+chrono = { version = "0.4", features = ["alloc", "serde"] }
+
+[profile.release]
+panic = "abort"
+lto = "thin"
+codegen-units = 1
+opt-level = "z"
+strip = true
+
+[profile.dev]
+panic = "abort"

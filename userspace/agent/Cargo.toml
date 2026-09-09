@@ -1,0 +1,29 @@
+[package]
+name = "ngos-agent"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+capability = { path = "../../libs/capability" }
+sel4-sys = { path = "../../libs/sel4-sys" }
+wasm-runtime = { path = "../../libs/wasm-runtime" }
+alloc = { package = "alloc", version = "1.80" }
+spin = "0.9"
+hashbrown = "0.14"
+smallvec = "1.12"
+anyhow = "1.0"
+thiserror = "1.0"
+serde = { version = "1.0", features = ["alloc", "derive"] }
+toml = "0.8"
+rusqlite = { version = "0.31", features = ["bundled", "vtab", "extra_check", "functions", "alloc"] }
+uuid = { version = "1.6", features = ["v4", "alloc", "serde"] }
+chrono = { version = "0.4", features = ["alloc", "serde"] }
+capnp = { version = "0.17", features = ["alloc"] }
+
+[profile.release]
+panic = "abort"
+lto = "thin"
+codegen-units = 1
+opt-level = "z"
+strip = true
